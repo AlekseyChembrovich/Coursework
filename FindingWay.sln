@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindingWay.DykstraAlgorithm", "FindingWay.DykstraAlgorithm\FindingWay.DykstraAlgorithm.csproj", "{A8A31873-4361-4A49-B154-D04F4B7397EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindingWay.FloydAlgorithm", "FindingWay.FloydAlgorithm\FindingWay.FloydAlgorithm.csproj", "{1BEC5243-9827-4A5C-BC34-E44F0CFBFCE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindingWay.UnitTests", "FindingWay.UnitTests\FindingWay.UnitTests.csproj", "{B86CD18F-AAE8-4E54-8FB0-EC2A655257DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8A31873-4361-4A49-B154-D04F4B7397EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8A31873-4361-4A49-B154-D04F4B7397EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8A31873-4361-4A49-B154-D04F4B7397EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8A31873-4361-4A49-B154-D04F4B7397EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BEC5243-9827-4A5C-BC34-E44F0CFBFCE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BEC5243-9827-4A5C-BC34-E44F0CFBFCE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BEC5243-9827-4A5C-BC34-E44F0CFBFCE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BEC5243-9827-4A5C-BC34-E44F0CFBFCE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B86CD18F-AAE8-4E54-8FB0-EC2A655257DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B86CD18F-AAE8-4E54-8FB0-EC2A655257DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B86CD18F-AAE8-4E54-8FB0-EC2A655257DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B86CD18F-AAE8-4E54-8FB0-EC2A655257DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70A59BF4-3B92-46C2-975C-9E487E531621}
+	EndGlobalSection
+EndGlobal
