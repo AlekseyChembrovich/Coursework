@@ -1,0 +1,4 @@
+0 Inf -2 Inf
+4 0 3 Inf
+Inf Inf 0 2
+Inf -1 Inf 0

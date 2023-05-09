@@ -1,11 +1,13 @@
-﻿namespace FindingWay.DykstraAlgorithm;
+﻿using System.Collections.ObjectModel;
 
-public class Node<T>
+namespace FindingWay.DykstraAlgorithm;
+
+public struct Node
 {
-    public T Value;
+    public ulong Value;
     public bool IsChecked = false;
 
-    public Node(T value)
+    public Node(ulong value)
     {
         Value = value;
     }

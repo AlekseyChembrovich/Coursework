@@ -2,76 +2,61 @@
 
 public static class Algorithm
 {
-    public static IReadOnlyList<Node<ulong>> GetShortestPath(this ulong[][] graph)
+    public static IReadOnlyList<Node> GetShortestPath(this ulong[][] graph, int targetI)
     {
-        var nodes = new Node<ulong>[5]
-        {
-            new(0),
-            new(ulong.MaxValue),
-            new(ulong.MaxValue),
-            new(ulong.MaxValue),
-            new(ulong.MaxValue)
-        };
+        var count = graph.GetLength(0);
+        if (targetI >= count || targetI < 0)
+            throw new ArgumentException("Passed target node index is not valid.");
+        
+        var nodes = new Node[count];
+        nodes[0] = new Node(0);
+        for (var i = 1; i < nodes.Length; i++)
+            nodes[i] = new Node(ulong.MaxValue);
 
-        var n = graph.GetLength(0);
-        for (var i = 0; i < n; i++)
+        for (var i = 0; i <= targetI; i++)
         {
             var minIndex = GetMinNodeIndex(nodes);
-            var currentNode = nodes[minIndex];
+            ref var currentNode = ref nodes[minIndex];
             currentNode.IsChecked = true;
             var relatedNodes = graph[minIndex];
-            
-            for (var j = 0; j < n; j++)
+            for (var j = 0; j < count; j++)
             {
                 if (minIndex == j)
-                {
                     continue;
-                }
 
-                var targetNode = nodes[j];
-                if (targetNode.IsChecked)
-                {
+                ref var nextNode = ref nodes[j];
+                if (nextNode.IsChecked)
                     continue;
-                }
 
                 var targetNodeValue = relatedNodes[j];
                 if (targetNodeValue == ulong.MaxValue)
-                {
                     continue;
-                }
 
                 var sum = currentNode.Value + targetNodeValue;
-                if (sum < targetNode.Value)
-                {
-                    targetNode.Value = sum;
-                }
+                if (sum < nextNode.Value)
+                    nextNode.Value = sum;
             }
         }
 
         return nodes;
     }
-
-    private static int GetMinNodeIndex(IReadOnlyList<Node<ulong>> array)
+    
+    private static int GetMinNodeIndex(IReadOnlyList<Node> nodes)
     {
         var minIndex = -1;
         var min = ulong.MaxValue;
-
-        for (var i = 0; i < array.Count; i++)
+        for (var i = 0; i < nodes.Count; i++)
         {
-            if (array[i].IsChecked)
-            {
+            if (nodes[i].IsChecked || min <= nodes[i].Value)
                 continue;
-            }
 
-            if (min <= array[i].Value)
-            {
-                continue;
-            }
-
-            min = array[i].Value;
+            min = nodes[i].Value;
             minIndex = i;
         }
 
+        if (minIndex == -1)
+            throw new ArgumentException("It is impossible to reach specified node.");
+        
         return minIndex;
     }
 }
