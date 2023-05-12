@@ -1,9 +1,13 @@
 /.idea
 /.vs/FindingWay/FileContentIndex
-/FindingWay.DykstraAlgorithm/bin/Debug/net6.0
+/FindingWay.DykstraAlgorithm/bin
 /FindingWay.DykstraAlgorithm/obj
-/FindingWay.FloydAlgorithm/bin/Debug/net6.0
+/FindingWay.FloydAlgorithm/bin
 /FindingWay.FloydAlgorithm/obj
-/FindingWay.UnitTests/bin/Debug/net6.0
+/FindingWay.UnitTests/bin
 /FindingWay.UnitTests/obj
 /.vs
+/FindingWay.Common/bin
+/FindingWay.Common/obj
+/FindingWay.ConsoleApp/bin
+/FindingWay.ConsoleApp/obj

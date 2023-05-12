@@ -1,13 +1,11 @@
 ﻿using Xunit;
-using FindingWay.UnitTests.Data;
+using FindingWay.Common;
 using FindingWay.DykstraAlgorithm;
 
 namespace FindingWay.UnitTests;
 
 public class DykstraAlgorithmTests
 {
-    private const ulong Inf = ulong.MaxValue;
-    
     [Fact]
     public async Task GetShortestPath_ReturnsTheShortestPathFromTheGraph1()
     {

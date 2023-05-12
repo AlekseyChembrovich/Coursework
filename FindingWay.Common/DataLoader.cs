@@ -1,4 +1,4 @@
-﻿namespace FindingWay.UnitTests.Data;
+﻿namespace FindingWay.Common;
 
 public static class DataLoader
 {
@@ -21,13 +21,13 @@ public static class DataLoader
 
                 newLine[j] = ulong.Parse(items[j]);
             }
-            
-            result[i] = newLine;   
+
+            result[i] = newLine;
         }
 
         return result;
     }
-    
+
     public static async Task<long[,]> LoadLongMatrixAsync(string fileName)
     {
         var matrixLines = await ReadFileAsync(fileName);
@@ -38,12 +38,12 @@ public static class DataLoader
             var items = matrixLines[i].Split(' ');
             for (var j = 0; j < items.Length; j++)
             {
-                if (items[j] ==  "Inf")
+                if (items[j] == "Inf")
                 {
                     result[i, j] = long.MaxValue;
                     continue;
                 }
-                
+
                 result[i, j] = long.Parse(items[j]);
             }
         }

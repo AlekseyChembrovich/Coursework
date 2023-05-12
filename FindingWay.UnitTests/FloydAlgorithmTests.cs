@@ -1,6 +1,6 @@
 ﻿using Xunit;
 using Shouldly;
-using FindingWay.UnitTests.Data;
+using FindingWay.Common;
 using FindingWay.FloydAlgorithm;
 
 namespace FindingWay.UnitTests;

@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindingWay.FloydAlgorithm",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindingWay.UnitTests", "FindingWay.UnitTests\FindingWay.UnitTests.csproj", "{B86CD18F-AAE8-4E54-8FB0-EC2A655257DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindingWay.ConsoleApp", "FindingWay.ConsoleApp\FindingWay.ConsoleApp.csproj", "{7DA40AD1-2DC6-46A4-83D9-0C970F337F0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindingWay.Common", "FindingWay.Common\FindingWay.Common.csproj", "{E412E20F-B16B-45EA-9840-D34C3CB619B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{B86CD18F-AAE8-4E54-8FB0-EC2A655257DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B86CD18F-AAE8-4E54-8FB0-EC2A655257DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B86CD18F-AAE8-4E54-8FB0-EC2A655257DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DA40AD1-2DC6-46A4-83D9-0C970F337F0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DA40AD1-2DC6-46A4-83D9-0C970F337F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DA40AD1-2DC6-46A4-83D9-0C970F337F0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DA40AD1-2DC6-46A4-83D9-0C970F337F0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E412E20F-B16B-45EA-9840-D34C3CB619B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E412E20F-B16B-45EA-9840-D34C3CB619B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E412E20F-B16B-45EA-9840-D34C3CB619B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E412E20F-B16B-45EA-9840-D34C3CB619B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
