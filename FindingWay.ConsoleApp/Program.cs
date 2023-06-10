@@ -1,21 +1,30 @@
 ﻿using FindingWay.Common;
+using FindingWay.ConsoleApp;
+using BenchmarkDotNet.Running;
 using FindingWay.FloydAlgorithm;
 using FindingWay.DykstraAlgorithm;
 
+#if RELEASE
+
+BenchmarkRunner.Run<AppBenchmark>();
+
+#else
+
 while (true)
 {
+    // Отображение основной группы команд
     Console.WriteLine("1 - Выполнить алгоритм Дейкстры");
     Console.WriteLine("2 - Выполнить алгоритм Флойда");
     Console.WriteLine("Esc - Завершить программу");
-    
+
     var commandKey = GetCommand();
-    if (commandKey is ConsoleKey.Escape)
+    if (commandKey is ConsoleKey.Escape) // Необходимо завершить работу программы
     {
         break;
     }
-    else if (commandKey is ConsoleKey.D1)
+    else if (commandKey is ConsoleKey.D1) // Операции с алгоритмом Дейкстры
     {
-        var graph = await GetDataForDykstra();
+        var graph = await GetDataForDykstra(); // Получение матрицы смежности для выполнения алгоритма
         Console.Write("Введите номер вершины, которую необходимо достичь: ");
         var isParsed = int.TryParse(Console.ReadLine(), out var node);
         if (!isParsed)
@@ -29,7 +38,7 @@ while (true)
         IReadOnlyList<Node> nodes = default;
         try
         {
-            nodes = graph.GetShortestPath(node);
+            nodes = graph.GetShortestPath(node); // Выполнение основного алгоритма
         }
         catch (ArgumentException ex)
         {
@@ -41,13 +50,13 @@ while (true)
         Console.WriteLine($"Кратчайший путь = {nodes[node].Value}");
         Console.WriteLine(new string('-', 40));
     }
-    else if (commandKey is ConsoleKey.D2)
+    else if (commandKey is ConsoleKey.D2) // Операции с алгоритмом Флойда
     {
-        var graph = await GetDataForFloyd();
+        var graph = await GetDataForFloyd(); // Получение матрицы смежности для выполнения алгоритма
         long[,] result = default;
         try
         {
-            result = graph.GetShortestPath();
+            result = graph.GetShortestPaths(); // Выполнение основного алгоритма
         }
         catch (ArgumentException ex)
         {
@@ -56,23 +65,21 @@ while (true)
             continue;
         }
 
+        // Вывод результатов расчёта
         var size = result.GetLength(0);
         for (var i = 0; i < size; i++)
         {
             for (var j = 0; j < size; j++)
             {
                 if (result[i, j] == long.MaxValue)
-                {
                     Console.Write($"Inf | ");
-                    continue;
-                }
-
-                Console.Write($"{result[i, j]} | ");
+                else
+                    Console.Write($"{result[i, j]} | ");
             }
 
             Console.WriteLine();
         }
-        
+
         Console.WriteLine(new string('-', 40));
     }
     else
@@ -83,6 +90,11 @@ while (true)
 
 Console.WriteLine("Программа завершила свою работу");
 
+/// <summary>
+/// Метод отображает операции с алгоритмом Дейкстры к выполнению, после чего пользователь выбирает необходимую операцию.
+/// В итоге метод считывает матрицу смежности из файла и возвращает вызывающему методу.
+/// </summary>
+/// <returns>Считанная метрица смежности.</returns>
 static async Task<ulong[][]> GetDataForDykstra()
 {
     Console.WriteLine("1 - Cтандартный ориентированный граф");
@@ -103,6 +115,11 @@ static async Task<ulong[][]> GetDataForDykstra()
     return graph;
 }
 
+/// <summary>
+/// Метод отображает операции с алгоритмом Флойда к выполнению, после чего пользователь выбирает необходимую операцию.
+/// В итоге метод считывает матрицу смежности из файла и возвращает вызывающему методу.
+/// </summary>
+/// <returns>Считанная метрица смежности.</returns>
 static async Task<long[,]> GetDataForFloyd()
 {
     Console.WriteLine("1 - Cтандартный ориентированный граф");
@@ -123,6 +140,10 @@ static async Task<long[,]> GetDataForFloyd()
     return graph;
 }
 
+/// <summary>
+/// Метод запрашивает у пользователя ввод команды с клавиатуры, после чего выполняет дополнительные консольные манипуляции.
+/// </summary>
+/// <returns>Код нажатой клавиши на клавиатуре.</returns>
 static ConsoleKey GetCommand()
 {
     Console.Write("\nВвод команды: ");
@@ -132,3 +153,5 @@ static ConsoleKey GetCommand()
 
     return currentCommand.Key;
 }
+
+#endif

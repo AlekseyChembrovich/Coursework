@@ -1,26 +1,41 @@
 ﻿namespace FindingWay.FloydAlgorithm;
 
+/// <summary>
+/// Реализация алгоритма Флойда для нахождения кратчайших путей между всеми вершинами.
+/// </summary>
 public static class Algorithm
 {
-    public static long[,] GetShortestPath(this long[,] graph)
+    /// <summary>
+    /// Метод находит кратчайшие пути между всеми парами вершин в графе через алгоритм Флойда.
+    /// </summary>
+    /// <param name="graph">Исходная матрица смежности.</param>
+    /// <returns>Матрица смежности содержащая описание кратчайших путей.</returns>
+    /// <exception cref="ArgumentException">
+    /// Если в процессе расчёта кратчайших путей встретиться отрицательный цикл - поведение программы не определено.
+    /// Для предотвращения этой ситуации, используется исключение, которое выбрасывается из метода.
+    /// </exception>
+    public static long[,] GetShortestPaths(this long[,] graph)
     {
-        var dist = (long[,])graph.Clone();
-        var n = dist.GetLength(0);
-        for (var k = 0; k < n; k++)
+        var dist = (long[,])graph.Clone(); // Создание копии массива, чтобы не изменять исходную матрицу смежности
+        var n = dist.GetLength(0); // Получаем одну из размерностей квадратной матрицы
+        for (var k = 0; k < n; k++) // Используем промежуточную вершину для расчёта стояний через неё
         {
             for (var i = 0; i < n; i++)
             {
                 for (var j = 0; j < n; j++)
                 {
-                    const long inf = long.MaxValue;
+                    const long inf = long.MaxValue; // Переменная предствляющая бесконечность
+                    // Если взять между двумя вершинами через промежуточную невозможно проложить - переходим к слещуему шагу
                     if (dist[i, k] == inf || dist[k, j] == inf)
                         continue;
                     
-                    var sum = dist[i, k] + dist[k, j];
+                    var sum = dist[i, k] + dist[k, j]; // Рассчитываем дистанцию через промежуточную вершину
+                    // Если новая дистанция короче - используем её вместо исходной
                     if (sum < dist[i, j])
                         dist[i, j] = sum;
                 }
 
+                // Если обнаружен отрицательный цикл - выбрасываем исключение
                 if (dist[i, i] < 0)
                     throw new ArgumentException("Graph contains negative cycle.");
             }

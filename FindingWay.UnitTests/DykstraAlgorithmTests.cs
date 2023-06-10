@@ -4,8 +4,14 @@ using FindingWay.DykstraAlgorithm;
 
 namespace FindingWay.UnitTests;
 
+/// <summary>
+/// Набор тестов для алгоритма Дейкстры
+/// </summary>
 public class DykstraAlgorithmTests
 {
+    /// <summary>
+    /// Тестовый случай проверяет правильность расчёта кратчайшего пути для обычного ориентированного графа.
+    /// </summary>
     [Fact]
     public async Task GetShortestPath_ReturnsTheShortestPathFromTheGraph1()
     {
@@ -21,7 +27,10 @@ public class DykstraAlgorithmTests
         var shortestPath = nodes[targetNodeIndex].Value;
         Assert.Equal(rightShortestPath, shortestPath);
     }
-    
+
+    /// <summary>
+    /// Тестовый случай проверяет правильность расчёта кратчайшего пути для неориентированного графа.
+    /// </summary>
     [Fact]
     public async Task GetShortestPath_ReturnsTheShortestPathFromTheGraph2()
     {
@@ -37,7 +46,10 @@ public class DykstraAlgorithmTests
         var shortestPath = nodes[targetNodeIndex].Value;
         Assert.Equal(rightShortestPath, shortestPath);
     }
-    
+
+    /// <summary>
+    /// Тестовый случай проверяет правильность обработки случая, когда был указан номер вершины, которой не существует.
+    /// </summary>
     [Fact]
     public async Task GetShortestPath_ThrowArgumentException_WhenTargetNodeIndexIsInvalid()
     {
@@ -54,7 +66,10 @@ public class DykstraAlgorithmTests
         // Assert
         Assert.Throws<ArgumentException>(action);
     }
-    
+
+    /// <summary>
+    /// Тестовый случай проверяет правильность обработки графа с вершиной, которую невозможно достичь.
+    /// </summary>
     [Fact]
     public async Task GetShortestPath_ThrowArgumentException_WhenImpossibleToReachTargetNode()
     {
@@ -72,6 +87,9 @@ public class DykstraAlgorithmTests
         Assert.Throws<ArgumentException>(action);
     }
     
+    /// <summary>
+    /// Тестовый случай проверяет правильность расчёта кратчайшего пути между штатами Канзас и Вирджиния.
+    /// </summary>
     [Fact]
     public async Task GetShortestPath_ReturnsTheShortestPathBetweenKansasAndVirginia()
     {
